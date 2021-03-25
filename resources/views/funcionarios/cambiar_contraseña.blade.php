@@ -1,0 +1,96 @@
+@extends('adminlte::page')
+
+@section('title', 'Contraseña')
+@section('content_header')
+    <h1>Contraseña</h1>
+    
+@stop
+@section('content')
+
+@isset($msj)
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{ $msj }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endisset
+
+@isset($error)
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{ $error }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endisset
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary collapsed-card">
+          <div class="card-header">
+            <h3 class="card-title">Cambiar contraseña </h3>
+{{-- 
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-plus"></i></button>
+            </div> --}}
+          </div>
+          <div class="card-body" style="display: table;">
+            <form method="post" class="form-horizontal" role="form" action="{{url('/funcionarios/update_password')}}">
+              {{csrf_field()}}
+          
+              <div class="centrarelemento">
+                <div class="bg-white shadow rounded py-3 px-4">
+          
+                  <div class="form-group row ">
+                    <label for="mypassword" class="col-sm-6 col-form-label">
+                      Introduce tu actual contraseña:
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="password" name="mypassword" class="form-control" value="{{old('mypassword')}}" required focus maxlength="18" minlength="4">
+                        <div class="text-danger">
+                          {{$errors->first('mypassword')}}
+                        </div>
+                    </div>
+                  </div>
+          
+                  <div class="form-group row">
+                    <label for="password" class="col-sm-6 col-form-label">
+                      Introduce tu nueva contraseña:
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="password" name="password" class="form-control" value="{{old('password')}}" required focus maxlength="18" minlength="4">
+                        <div class="text-danger">
+                          {{$errors->first('password')}}
+                        </div>
+                    </div>
+                  </div>
+          
+                  <div class="form-group row">
+                    <label for="password" class="col-sm-6 col-form-label">
+                      Confirma tu nueva contraseña:
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="password" name="password_confirmation" class="form-control" value="{{old('password_confirmation')}}" required focus maxlength="18" minlength="4">
+                        <div class="text-danger">
+                          {{$errors->first('password')}}
+                        </div>
+                    </div>
+                  </div>
+                      <button type="submit" class="btn btn-primary">Cambiar contraseña</button>
+                </div>
+              </div>
+          
+            </form>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+
+    </div>
+  </section>
+
+
+@endsection
