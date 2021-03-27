@@ -25,7 +25,7 @@ class ClienteControlador extends Controller
         foreach ($equipoid as $id)
         {
           $equipoid = $id->id_equipo;
-          $echo=$equipoid;
+         
         }
         $cliente->id_equipo = $equipoid;
         $ciudadid = Ciudads::select('id_ciudad')->where('ciu_descripcion', '=',$searchciudad)->get();

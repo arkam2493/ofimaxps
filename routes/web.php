@@ -34,7 +34,11 @@ Route::group(['middleware' => 'auth'], function()
     
     //BUSQUEDA DINAMICA CIUDAD
     Route::post('/ciudad/getAutocomplete/','CiudadControlador@postAutocomplete')->name('Autocomplete.ciudad');
-    //BUSQUEDA DINAMICA CIUDAD
+    //BUSQUEDA DINAMICA EQUIPO
     Route::post('/equipo/getAutocomplete/','EquipoControlador@postAutocomplete')->name('Autocomplete.equipo');
+   
+
+
+    
 });
 
